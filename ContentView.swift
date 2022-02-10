@@ -14,8 +14,7 @@ class DoOperations: NSObject, ObservableObject {
                deckOfCards.append(Image("\(rank)_of_\(s)"))
            }
        }
-     }
-    
+    }
 }
 
 struct ContentView: View {
