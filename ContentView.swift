@@ -10,14 +10,14 @@ class DoOperations: NSObject, ObservableObject {
     }
     
     let suiteEndings = ["hearts", "clubs", "diamonds", "spades"]
-    let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
+    let names = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
     override init(){
 
        super.init()
         
        for s in suiteEndings {
-            for rank in ranks{
-                let tempCard = card(cardName: rank, cardImage: Image("\(rank)_of_\(s)"), suit: s, rank: ranks.firstIndex(of: rank)! + 2)
+            for name in names{
+                let tempCard = card(cardName: name, cardImage: Image("\(name)_of_\(s)"), suit: s, rank: names.firstIndex(of: name)! + 2)
                 deckOfCards.append(tempCard)
            }
        }
