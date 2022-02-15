@@ -3,10 +3,10 @@ import SwiftUI
 class DoOperations: NSObject, ObservableObject {
     @Published var deckOfCards:[card] = []
     struct card{
-        var cardName:String?
-        var cardImage:Image?
-        var suit:String?
-        var rank:Int?
+        var cardName:String
+        var cardImage:Image
+        var suit:String
+        var rank:Int
     }
     
     let suiteEndings = ["hearts", "clubs", "diamonds", "spades"]
@@ -37,7 +37,7 @@ struct ContentView: View {
                 op.deckOfCards[0].cardImage
                     .imageScale(.large)
             }
-            Text("Card Name: \(op.deckOfCards[0].cardName!), Card Suit: \(op.deckOfCards[0].suit!), Card IndexPower: \(op.deckOfCards[0].rank!)")
+            Text("Card Name: \(op.deckOfCards[0].cardName), Card Suit: \(op.deckOfCards[0].suit), Card IndexPower: \(op.deckOfCards[0].rank)")
             
         }
     }
