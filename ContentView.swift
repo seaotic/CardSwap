@@ -1,7 +1,13 @@
 import SwiftUI
 
 class DoOperations: NSObject, ObservableObject {
-    @Published var deckOfCards:[Image] = []
+    @Published var deckOfCards:[card] = []
+    struct card{
+        var cardName:String?
+        var cardImage:Image?
+        var suit:String?
+        var rank:Int?
+    }
     
     let suiteEndings = ["hearts", "clubs", "diamonds", "spades"]
     let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
@@ -11,7 +17,8 @@ class DoOperations: NSObject, ObservableObject {
         
        for s in suiteEndings {
             for rank in ranks{
-               deckOfCards.append(Image("\(rank)_of_\(s)"))
+                let tempCard = card(cardName: rank, cardImage: Image("\(rank)_of_\(s)"), suit: s, rank: ranks.firstIndex(of: rank)! + 2)
+                deckOfCards.append(tempCard)
            }
        }
     }
@@ -22,15 +29,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            op.deckOfCards[0]
-                .imageScale(.large)
             
             Button {
                 op.deckOfCards.append(op.deckOfCards[0])
                 op.deckOfCards.remove(at: 0)
             } label: {
-                Text("Flip Images")
+                op.deckOfCards[0].cardImage
+                    .imageScale(.large)
             }
+            Text("Card Name: \(op.deckOfCards[0].cardName!), Card Suit: \(op.deckOfCards[0].suit!), Card IndexPower: \(op.deckOfCards[0].rank!)")
             
         }
     }
